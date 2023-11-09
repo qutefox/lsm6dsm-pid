@@ -924,6 +924,28 @@ int32_t lsm6dsm_temp_flag_data_ready_get(stmdev_ctx_t *ctx,
 }
 
 /**
+  * @brief  Gyroscope, accelerometer new data available.[get]
+  *
+  * @param  ctx       Read / write interface definitions
+  * @param  gy_val    Change the values of tda in reg STATUS_REG
+  * @param  xl_val    Change the values of tda in reg STATUS_REG
+  * @retval           Interface status (MANDATORY: return 0 -> no Error).
+  *
+  */
+int32_t lsm6dsm_data_ready_get(stmdev_ctx_t *ctx, uint8_t *gy_val, uint8_t *xl_val)
+{
+  lsm6dsm_status_reg_t status_reg;
+  int32_t ret;
+
+  ret = lsm6dsm_read_reg(ctx, LSM6DSM_STATUS_REG,
+                         (uint8_t *)&status_reg, 1);
+  *gy_val = status_reg.gda;
+  *xl_val = status_reg.xlda;
+
+  return ret;
+}
+
+/**
   * @brief  Accelerometer axis user offset correction expressed in two’s
   *         complement, weight depends on USR_OFF_W in CTRL6_C.
   *         The value must be in the range [-127 127].[set]

@@ -1958,6 +1958,8 @@ int32_t lsm6dsm_gy_flag_data_ready_get(stmdev_ctx_t *ctx,
 int32_t lsm6dsm_temp_flag_data_ready_get(stmdev_ctx_t *ctx,
                                          uint8_t *val);
 
+int32_t lsm6dsm_data_ready_get(stmdev_ctx_t *ctx, uint8_t *gy_val, uint8_t *xl_val);
+
 int32_t lsm6dsm_xl_usr_offset_set(stmdev_ctx_t *ctx, uint8_t *buff);
 int32_t lsm6dsm_xl_usr_offset_get(stmdev_ctx_t *ctx, uint8_t *buff);
 int32_t lsm6dsm_timestamp_set(stmdev_ctx_t *ctx, uint8_t val);
