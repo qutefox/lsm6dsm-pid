@@ -1965,6 +1965,8 @@ int32_t lsm6dsm_xl_usr_offset_get(stmdev_ctx_t *ctx, uint8_t *buff);
 int32_t lsm6dsm_timestamp_set(stmdev_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsm_timestamp_get(stmdev_ctx_t *ctx, uint8_t *val);
 
+int32_t lsm6dsm_timestamp_raw_get(stmdev_ctx_t *ctx, uint32_t *buff);
+
 typedef enum
 {
   LSM6DSM_LSB_6ms4    = 0,

@@ -1119,6 +1119,27 @@ int32_t lsm6dsm_timestamp_res_get(stmdev_ctx_t *ctx,
 }
 
 /**
+  * @brief  Timestamp output value[get]
+  * @param  ctx    Read / write interface definitions
+  * @param  buff   Buffer that stores data read
+  * @retval        Interface status (MANDATORY: return 0 -> no Error).
+  *
+  */
+int32_t lsm6dsm_timestamp_raw_get(stmdev_ctx_t *ctx, uint32_t *buff)
+{
+  uint8_t reg[3];
+  int32_t ret;
+
+  ret =  lsm6dsm_read_reg(ctx, LSM6DSM_TIMESTAMP0_REG, reg, 3);
+  *buff = reg[2];
+  *buff = (*buff * 256) + reg[1];
+  *buff = (*buff * 256) + reg[0];
+  *buff *= 256;
+
+  return ret;
+}
+
+/**
   * @}
   *
   */
