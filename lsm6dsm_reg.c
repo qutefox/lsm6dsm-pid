@@ -1134,7 +1134,6 @@ int32_t lsm6dsm_timestamp_raw_get(stmdev_ctx_t *ctx, uint32_t *buff)
   *buff = reg[2];
   *buff = (*buff * 256) + reg[1];
   *buff = (*buff * 256) + reg[0];
-  *buff *= 256;
 
   return ret;
 }
